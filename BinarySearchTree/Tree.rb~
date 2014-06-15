@@ -48,7 +48,5 @@ class Tree
 	  end 
 	  else 
 	     puts "Ooops..the #{key} is not Available in the Tree!"
-	  end
-	end
 end
 
