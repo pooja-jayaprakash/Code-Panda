@@ -75,6 +75,7 @@ class Tree
 			   parent.rightchild = nil 
 			end 
 		end 
+	    
 		
 		if ptr.leftchild == nil || ptr.rightchild == nil #case:2 were the key to be deleted exactly has only one child which might be a
 			if ptr.leftchild != nil 		 #leftchild or a rightchild
@@ -101,6 +102,34 @@ class Tree
 		   node = node.leftchild 
 		end 
 		return node
-	end		   
+	end		
+
+	def inorderRecursive
+		ptr = @root 
+		while ptr != null 
+			inorderRecursive(ptr.leftchild)
+			puts ptr.data
+			inorderRecursive(ptr.rightchild)
+		end
+		
+	def inorderIterative
+		ptr = @root 
+		stack = [] 
+		stack.push(ptr)
+			if stack[0] != nil 
+			  stack.push(ptr.leftchild)
+			end
+			else
+				if stack.nil?
+					puts "Done"
+				end
+				else
+					p stack.pop
+					ptr = ptr.rightchild
+				end
+			end
+	end
+
+				   
 end
 

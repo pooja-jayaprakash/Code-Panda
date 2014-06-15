@@ -95,12 +95,40 @@ class Tree
 	 
 	end
 	
-	def succr(node) 
-		node = node.rightchild 
+	def succr(node) 			
+		node = node.rightchild 				# the function returns the inorder successor of node to be deleted
 		if node.leftchild != nil 
 		   node = node.leftchild 
 		end 
 		return node
-	end		   
+	end		
+
+	def inorderRecursive
+		ptr = @root 
+		while ptr != null 
+			inorderRecursive(ptr.leftchild)
+			puts ptr.data
+			inorderRecursive(ptr.rightchild)
+		end
+		
+	def inorderIterative
+		ptr = @root 
+		stack = [] 
+		stack.push(ptr)
+			if stack[0] != nil 
+			  stack.push(ptr.leftchild)
+			end
+			else
+				if stack.nil?
+					puts "Done"
+				end
+				else
+					p stack.pop
+					ptr = ptr.rightchild
+				end
+			end
+	end
+
+				   
 end
 
