@@ -50,5 +50,57 @@ class Tree
 	     puts "Ooops..the #{key} is not Available in the Tree!"
 	  end
 	end
+
+	def deleteBst(key)
+	   ptr = @root 
+	   while ptr != nil && ptr.data != key 
+		if key < ptr.data
+		 parent = ptr
+		 ptr = ptr.leftchild 
+		end 
+		if key > ptr.data 
+		 parent = ptr 
+		 ptr.rightchild
+		end 
+	   end
+	   if ptr.data != key 
+      	      puts "Ooops..the #{key} is not Available in the Tree!"
+	   end 
+	   else 
+		if ptr.leftchild == nil && ptr.rightchild == nil #case:1 were the key to be deleted is a leaf node 
+			if parent.leftchild == ptr 
+			   parent.leftchild = nil 
+			end 
+			else 
+			   parent.rightchild = nil 
+			end 
+		end 
+		
+		if ptr.leftchild == nil || ptr.rightchild == nil #case:2 were the key to be deleted exactly has only one child which might be a
+			if ptr.leftchild != nil 		 #leftchild or a rightchild
+			   ptr.data = ptr.leftchild.data
+			   ptr.leftchild = nil 
+			end 
+			if ptr.rightchild !=nil 
+			   ptr.data = ptr.rightchild.data
+			   ptr.leftchild = nil 
+			end 
+		end
+		if ptr.leftchild != nil && ptr.rightchild != nil #case:3 were the key to be deleted has both leftchild and rightchild
+			succ_ptr = succr(ptr)
+			ptr.data = succ_ptr.data 
+			succ_ptr = nil 
+		end 
+	  end
+	 
+	end
+	
+	def succr(node) 			
+		node = node.rightchild 				# the function returns the inorder successor of node to be deleted
+		if node.leftchild != nil 
+		   node = node.leftchild 
+		end 
+		return node
+	end		   
 end
 
