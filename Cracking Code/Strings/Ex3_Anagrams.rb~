@@ -6,7 +6,8 @@ class Ex3_Anagrams
 	def initialize(str1,str2)
 	    @str1 = str1
 	    @str2 = str2
-	    anagram(str1,str2)
+	   # anagram(str1,str2)
+	    witot_built_in_fns(str1,str2)
 	end 
 	
 	def anagram(str1,str2)
@@ -18,26 +19,26 @@ class Ex3_Anagrams
 		puts "Oops sorry the strings are not anagrams"
 	    end 
 	end 
-end
 
-	def witot_built_in_fns(str1,str2)
-		string1 = str1.downcase
-		string2 = str2.downcase
-		a = string1.scan./\w/
-		b = string2.scan./\w/
-		a.each do |i|
-		       numlttrs[(('a[i]'.ord) - ('a'.ord))]++
+	def witot_built_in_fns(a,b)
+		str1 = a.downcase
+		str2 = b.downcase
+		string1 = str1.scan.(/./)
+		string2 = str2.scan.(/./)
+		numltts1 =count_frequency(string1)
+		numltts2 =count_frequency(string2)
+		if numltts1 == numltts2 
+			puts "Both the strings are anagrams and u just found that out without using a sort function!!"
+		else 
+			puts "Tough luck they were'nt anagrams"
 		end
-		b.each do |i|
-		       numlttrs[(('b[i]'.ord) - ('a'.ord))]--
-		end
-		numlttrs.each do |i|
-		       if numlttrs[i] != 0
-			  flag = TRUE 
-			end
-		end
-		if flag == TRUE 
-		   puts "not an anagram"
-		else
-		   puts "Strings are perfect anagrams"
-	end		    
+	end
+	
+	def count_frequency(word_list)
+		counts = Hash.new(0)
+		for word in word_list 
+			counts[word] +=1
+		end 
+		return counts 
+	end
+end
