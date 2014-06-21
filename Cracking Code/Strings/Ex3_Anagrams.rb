@@ -19,3 +19,25 @@ class Ex3_Anagrams
 	    end 
 	end 
 end
+
+	def witot_built_in_fns(str1,str2)
+		string1 = str1.downcase
+		string2 = str2.downcase
+		a = string1.scan.(/./)
+		b = string2.scan.(/./)
+		a.each do |i|
+		       numlttrs[(('a[i]'.ord) - ('a'.ord))]++
+		end
+		b.each do |i|
+		       numlttrs[(('b[i]'.ord) - ('a'.ord))]--
+		end
+		numlttrs.each do |i|
+		       if numlttrs[i] != 0
+			  flag = TRUE 
+			end
+		end
+		if flag == TRUE 
+		   puts "not an anagram"
+		else
+		   puts "Strings are perfect anagrams"
+	end		    
