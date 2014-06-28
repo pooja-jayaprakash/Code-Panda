@@ -1,0 +1,17 @@
+class File_Reader 
+	attr_accessor :result
+	def initialize (result)
+	    @result = result 
+	     read()
+	end 
+	def read 
+	        File.open(filename, 'r').each_line do |line|
+  		results = line.strip.split '$'
+  		#graph_data[line.first.to_s] = line.last.to_s
+		end
+
+	    	#results = open('./albums.txt').map { |line| line.split('$')[0] }
+	    	p results
+	end
+	
+end
